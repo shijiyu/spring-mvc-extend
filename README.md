@@ -1,1 +1,2 @@
-"# spring-mvc-extend" 
+1)使用spring mvc框架，对返回的ID数据进行加密后返回
+2）对在Path中的参数进行解密后调用controller方法
