@@ -1,13 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-
-	<parent>
-		<groupId>com.doctor</groupId>
-		<artifactId>maven-parent-doctor</artifactId>
-		<version>2</version>
-	</parent>
+	<groupId>com.lenovo</groupId>
 	<artifactId>spring-web-demo</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
@@ -212,14 +206,4 @@
 				</executions> </plugin> -->
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>doctorwho-maven-repo</id>
-			<url>https://raw.githubusercontent.com/sdcuike/maven-repo/master/repositories/releases</url>
-		</repository>
-		<repository>
-			<id>doctorwho-maven-repo-s</id>
-			<url>https://raw.githubusercontent.com/sdcuike/maven-repo/master/repositories/snapshots</url>
-		</repository>
-	</repositories>
 </project>
