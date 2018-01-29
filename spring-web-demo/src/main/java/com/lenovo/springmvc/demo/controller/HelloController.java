@@ -35,7 +35,7 @@ import com.lenovo.springmvc.vo.MessageInfoVo;
 import com.lenovo.springmvc.vo.SubMessageInfoVo;
 
 /**
- * @author sdcuike
+ * @author shijy2
  *
  *         Created At 2016年8月28日 下午11:44:00
  */
