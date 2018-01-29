@@ -26,9 +26,8 @@ import org.springframework.http.HttpHeaders;
 import com.lenovo.springmvc.extend.RequestDecryptBodyProcessor;
 
 /**
- * @author sdcuike
+ * @author shijy2
  *
- *         Created At 2016年10月27日 下午11:07:17
  */
 public class RequestDecryptBodyProcessorImpl extends RequestDecryptBodyProcessor {
 

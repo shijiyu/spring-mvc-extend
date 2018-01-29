@@ -30,9 +30,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
 
 /**
- * @author sdcuike
+ * @author shijy2
  *
- *         Created At 2016年10月26日 下午11:59:07
+ *       
  */
 public abstract class RequestDecryptBodyProcessor {
 

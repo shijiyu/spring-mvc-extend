@@ -24,15 +24,13 @@ import java.util.Map;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.ImmutableList;
-import com.lenovo.springmvc.extend.PathVariableDecrypt;
-import com.lenovo.springmvc.extend.RequestDecryptBody;
-import com.lenovo.springmvc.extend.ResponseEncryptBody;
 import com.lenovo.springmvc.vo.MessageInfoVo;
 import com.lenovo.springmvc.vo.SubMessageInfoVo;
 
@@ -53,19 +51,19 @@ public class HelloController {
 
     @RequestMapping(value = "/hello1", method = { RequestMethod.POST })
     @ResponseBody
-    public MessageInfoVo hello1(@RequestDecryptBody MessageInfoVo message) {
+    public MessageInfoVo hello1(@RequestBody MessageInfoVo message) {
         return message;
     }
 
     @RequestMapping(value = "/hello2", method = { RequestMethod.POST })
-    @ResponseEncryptBody
-    public MessageInfoVo hello2(@RequestDecryptBody MessageInfoVo message) {
+    @ResponseBody
+    public MessageInfoVo hello2(@RequestBody MessageInfoVo message) {
         return message;
     }
 
     @RequestMapping(value = "/hello3/{path}", method = { RequestMethod.POST })
-    @ResponseEncryptBody
-    public MessageInfoVo hello3(@RequestBody MessageInfoVo message,@PathVariableDecrypt String path) {
+    @ResponseBody
+    public MessageInfoVo hello3(@RequestBody MessageInfoVo message,@PathVariable String path) {
     	MessageInfoVo info = new MessageInfoVo();
     	info.setId(1);
     	info.setName("test");
@@ -79,20 +77,20 @@ public class HelloController {
 
 
     @RequestMapping(value = "/hello6", method = { RequestMethod.POST })
-    @ResponseEncryptBody
-    public MessageInfoVo hello6(@RequestDecryptBody MessageInfoVo message) {
+    @ResponseBody
+    public MessageInfoVo hello6(@RequestBody MessageInfoVo message) {
         return message;
     }
 
     @RequestMapping(value = "/hello4", method = { RequestMethod.POST })
-    @ResponseEncryptBody
-    public Map<String, Object> hello4(@RequestDecryptBody Map<String, Object> message) {
+    @ResponseBody
+    public Map<String, Object> hello4(@RequestBody Map<String, Object> message) {
         return message;
     }
 
     @RequestMapping(value = "/hello5", method = { RequestMethod.POST })
-    @ResponseEncryptBody
-    public List<Object> hello5(@RequestDecryptBody List<Object> message) {
+    @ResponseBody
+    public List<Object> hello5(@RequestBody List<Object> message) {
         return message;
     }
 
