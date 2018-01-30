@@ -22,7 +22,6 @@ package com.lenovo.springmvc.demo.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +39,7 @@ import com.lenovo.springmvc.vo.SubMessageInfoVo;
  *         Created At 2016年8月28日 下午11:44:00
  */
 @Controller
-@RequestMapping(value = "/app", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(value = "/app")
 public class HelloController {
 
     @RequestMapping(value = "/hello", method = { RequestMethod.POST })
@@ -51,8 +50,11 @@ public class HelloController {
 
     @RequestMapping(value = "/hello1", method = { RequestMethod.POST })
     @ResponseBody
-    public MessageInfoVo hello1(@RequestBody MessageInfoVo message) {
-        return message;
+    public MessageInfoVo hello1( MessageInfoVo message) {
+    	MessageInfoVo info = new MessageInfoVo();
+    	info.setId(1);
+    	info.setName("test");
+        return info;
     }
 
     @RequestMapping(value = "/hello2", method = { RequestMethod.POST })
@@ -63,7 +65,7 @@ public class HelloController {
 
     @RequestMapping(value = "/hello3/{path}", method = { RequestMethod.POST })
     @ResponseBody
-    public MessageInfoVo hello3(@RequestBody MessageInfoVo message,@PathVariable String path) {
+    public MessageInfoVo hello3(MessageInfoVo message,@PathVariable String path) {
     	MessageInfoVo info = new MessageInfoVo();
     	info.setId(1);
     	info.setName("test");
