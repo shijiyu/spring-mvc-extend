@@ -14,6 +14,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -72,6 +73,7 @@ public class DecryptEncryptMessageConverter extends FastJsonHttpMessageConverter
         }
        
         byte[] bytes = jsonString.getBytes(fastJsonConfig.getCharset());
+		headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         headers.setContentLength(bytes.length);
         OutputStream out = outputMessage.getBody();
         out.write(bytes);

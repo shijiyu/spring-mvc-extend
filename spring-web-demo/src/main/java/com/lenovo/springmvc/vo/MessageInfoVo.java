@@ -12,6 +12,8 @@ import lombok.Setter;
 @Getter
 public class MessageInfoVo {
 	private String name;
+	@MaskField
     private Integer id;
+	
     private List<SubMessageInfoVo> subMessage;
 }

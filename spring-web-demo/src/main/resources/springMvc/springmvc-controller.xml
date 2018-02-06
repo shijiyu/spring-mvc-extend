@@ -15,69 +15,19 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
     </context:component-scan>
 
-
-	<bean id="requestDecryptResponseEncryptBodyProcessorImpl"
-		class="com.lenovo.springmvc.demo.controller.RequestDecryptBodyProcessorImpl" />
-
-	<bean id="decryptEncryptFastJsonHttpMessageConverter"
-		class="com.lenovo.springmvc.extend.DecryptEncryptMessageConverter"
-		p:requestDecryptResponseEncryptBodyProcessor-ref="requestDecryptResponseEncryptBodyProcessorImpl" />
-
-
-	<bean id="requestDecryptResponseEncryptBodyMethodProcessor"
-		class="com.lenovo.springmvc.extend.RequestEncryptBodyMethodProcessor">
-		<constructor-arg>
-			<list>
-				<ref bean="decryptEncryptFastJsonHttpMessageConverter" />
-			</list>
-		</constructor-arg>
-	</bean>
-
-	<bean id="pathVDecryptMethodProcessor"
-		class="com.lenovo.springmvc.extend.PathVariableDecryptMethodProcessor">
-	</bean>
-	<!-- 增加自定义mappinghadlerAdapter -->
-    <bean id="handler"
-		class="org.springframework.web.servlet.mvc.method.annotation.ExtendRequestMappingHadlerAdapter">
-		<property name="synchronizeOnSession" value="true"/> 
-		<property name="messageConverters">
-			<list>
-				<bean
-					class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4" />
-			</list>
-		</property>
-		<property name="customArgumentResolvers">
-			<list>
-				<ref bean="requestDecryptResponseEncryptBodyMethodProcessor" />
-				<ref bean="pathVDecryptMethodProcessor" />
-			</list>
-		</property>
-		<property name="customReturnValueHandlers">
-			<list>
-				<ref bean="requestDecryptResponseEncryptBodyMethodProcessor" />
-			</list>
-		</property>
-	</bean> 
-	<mvc:annotation-driven></mvc:annotation-driven>
-	
-	<bean id="mappingJacksonHttpMessageConverter"
-        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-        <property name="supportedMediaTypes">
-            <list>
-                <value>text/html;charset=UTF-8</value>
-                <value>application/json;charset=UTF-8</value>
-            </list>
-        </property>
-    </bean> 
-	  <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
-    <bean
-        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <!-- json转换器 -->
-                <ref bean="mappingJacksonHttpMessageConverter" />
-            </list>
-        </property>
-    </bean>
+    
+    <mvc:annotation-driven> 
+    <mvc:message-converters> 
+        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"> 
+            <property name="objectMapper"> 
+                <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                   <property name="serializationInclusion">
+                    <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+                    </property>
+                </bean> 
+            </property> 
+        </bean> 
+    </mvc:message-converters> 
+    </mvc:annotation-driven> 
 
 </beans>
